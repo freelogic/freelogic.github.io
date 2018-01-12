@@ -6,7 +6,7 @@
 
 # github need baseurl="", gitee need baseurl="webpost", so ignore it and edit directly on git remote repo!
 #如果只对一个远端GIT仓库做提交，就不能忽略这个文件，必须提交！
-#_config.yml
+_config.yml
 
 # exclud ide meta files
 .idea*

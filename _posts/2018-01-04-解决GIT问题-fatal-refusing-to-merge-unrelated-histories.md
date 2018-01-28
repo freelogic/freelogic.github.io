@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 20180104-解决GIT问题-fatal-refusing-to-merge-unrelated-histories
+title: 2018-01-04-解决GIT问题-fatal-refusing-to-merge-unrelated-histories
 key: 20180104
 tags: GIT 问答 版本管理
 modify_date: 2018-01-04

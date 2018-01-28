@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 20171224-解决GIT问题-github-push-failed[Permission to userA/repo.git denied to userB]
+title: 2017-12-24-解决GIT问题-github-push-failed[Permission to userA/repo.git denied to userB]
 key: 20171224
 tags: GIT 问答 版本管理
 modify_date: 2017-12-24

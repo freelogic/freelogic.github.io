@@ -12,6 +12,7 @@
 <br>|[20180105-医药行业的IT革命探讨](./_posts/2018-01-05-医药行业的IT革命探讨.md)
 <br>|[2018-02-02-解决IDE中无法忽略的非代码文件](./_posts/2018-02-02-解决IDE中无法忽略的非代码文件.md)
 <br>|[2018-02-03-jekyll框架下的post如何显示图片](./_posts/2018-02-03-jekyll框架下的post如何显示图片.md)
+<br>|[2018-02-03-PY3下经典数据集iris的机器学习算法举例-零基础](./_posts/2018-02-03-PY3下经典数据集iris的机器学习算法举例-零基础.md)
 
 ## 2.镜像和源码
 <br>|[github版](https://freelogic.github.io/)([源码](https://github.com/freelogic/freelogic.github.io))|

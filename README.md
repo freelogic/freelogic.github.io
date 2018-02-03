@@ -10,10 +10,12 @@
 <br>|[20180103-简易GIT开发流程指南](./_posts/2018-01-03-简易GIT流程.md)
 <br>|[20180104-解决GIT问题-fatal-refusing-to-merge-unrelated-histories](./_posts/2018-01-04-解决GIT问题-fatal-refusing-to-merge-unrelated-histories.md)
 <br>|[20180105-医药行业的IT革命探讨](./_posts/2018-01-05-医药行业的IT革命探讨.md)
+<br>|[2018-02-02-解决IDE中无法忽略的非代码文件](./_posts/2018-02-02-解决IDE中无法忽略的非代码文件.md)
 
 ## 2.镜像和源码
-<br>|[博客github版](https://freelogic.github.io/)([源码](https://github.com/freelogic/freelogic.github.io))|
-<br>|[博客gitee版](https://freelogic.gitee.io/webpost/)([源码](https://gitee.com/freelogic/webpost))|
+<br>|[github版](https://freelogic.github.io/)([源码](https://github.com/freelogic/freelogic.github.io))|
+<br>|[gitee版](https://freelogic.gitee.io/webpost/)([源码](https://gitee.com/freelogic/webpost))|
+<br>|[博客圆版](http://www.cnblogs.com/taichu/)|
 
 ## 3.版权
 * 对于博客内容，欢迎转载，但需注明出处，且禁止用于商业目的。

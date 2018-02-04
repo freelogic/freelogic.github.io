@@ -1,6 +1,7 @@
 # freelogic's blog
 
 ## 1.博客目录
+<br>|[2099-01-01-分布式计算-资源收集](./_posts/2099-01-01-分布式计算-资源收集.md)
 <br>|[20171122-blog搭建简介](./_posts/2017-11-22-blog搭建简介.md)
 <br>|[20171224-开通博客!](./_posts/2017-12-24-开通博客.md)
 <br>|[20171224-解决GIT问题-github-push-failed[Permission to userA/repo.git denied to userB]](./_posts/2017-12-24-解决GIT问题-github-push-failed-Permission-to-userA-repogit-denied-to-userB.md)
@@ -13,6 +14,7 @@
 <br>|[2018-02-02-解决IDE中无法忽略的非代码文件](./_posts/2018-02-02-解决IDE中无法忽略的非代码文件.md)
 <br>|[2018-02-03-jekyll框架下的post如何显示图片](./_posts/2018-02-03-jekyll框架下的post如何显示图片.md)
 <br>|[2018-02-03-PY3下经典数据集iris的机器学习算法举例-零基础](./_posts/2018-02-03-PY3下经典数据集iris的机器学习算法举例-零基础.md)
+
 
 ## 2.镜像和源码
 <br>|[github版](https://freelogic.github.io/)([源码](https://github.com/freelogic/freelogic.github.io))|

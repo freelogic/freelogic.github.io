@@ -1,7 +1,7 @@
 # freelogic's blog
 
 ## 1.博客目录
-<br>|[2099-01-01-分布式计算-资源收集](./_posts/2099-01-01-分布式计算-资源收集.md)
+<br>|[2018-02-04-分布式计算-资源收集](./_posts/2018-02-04-分布式计算-资源收集.md)
 <br>|[20171122-blog搭建简介](./_posts/2017-11-22-blog搭建简介.md)
 <br>|[20171224-开通博客!](./_posts/2017-12-24-开通博客.md)
 <br>|[20171224-解决GIT问题-github-push-failed[Permission to userA/repo.git denied to userB]](./_posts/2017-12-24-解决GIT问题-github-push-failed-Permission-to-userA-repogit-denied-to-userB.md)

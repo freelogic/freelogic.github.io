@@ -10,6 +10,8 @@ _config.yml
 
 # exclud ide meta files
 .idea*
+.idea\*.*
+.idea\*
 *.iml
 
 

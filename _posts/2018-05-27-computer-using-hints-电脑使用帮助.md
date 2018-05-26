@@ -6,8 +6,6 @@ tags: ubuntu cuda cudnn tensorflow gym qq ssh
 modify_date: 05-27
 ---
 
-
-
 # 2018-05-27-computer-using-hints-电脑使用帮助
 
 说明：

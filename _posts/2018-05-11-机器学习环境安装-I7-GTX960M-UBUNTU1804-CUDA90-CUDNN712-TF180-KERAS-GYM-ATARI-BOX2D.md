@@ -21,58 +21,6 @@ modify_date: 05-11
 
 ## 机器学习环境安装全家桶
 
-### ubuntu18.04环境实用经验
-
-* 1.ubuntu18.04切换默认的python方法:
-  * 链接: https://segmentfault.com/q/1010000003713912
-  * 命令:
-    ```
-    # 如下命令用来定义2种python
-    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100     
-    sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
-    
-    # 如下命令用来切换
-    sudo update-alternatives --config python
-    ```
-
-* 2.ubuntu18.04安装摆渡云盘客户端(不是摆渡云同步客户端)
-  * 链接:https://blog.csdn.net/tao_627/article/details/45007637 (这个链接有bcloud3.9.1安装包,是能找到的最新版本,已放入云盘"我的程序\ubuntu\哦嗯"位置;bcloud其实都是社区和个人自己维护的!已测可用)
-  * 安装指导:https://blog.csdn.net/qq_37163122/article/details/78169072 
-
-* 3.ssh登录ubuntu18.04
-  * 原理:默认ubuntu系统安装后有ssh,而没有sshd,所以其他服务器要通过ssh链接ubuntu需要如下
-  ```
-    安装指导:https://jingyan.baidu.com/article/359911f5a5b74857fe0306c4.html
-    首先看看自己的Ubuntu是不是已经安装或启用了ssh服务，执行ps -e |grep ssh
-    如果只有ssh-agent 这个是ssh-client客户端服务，如果没有sshd，继续如下安装ssh-server
-    安装sshd: 
-    sudo apt install openssh-server
-
-    手动操作开启/关闭ssh服务相关命令：
-    sudo service ssh start #手动启动服务
-    sudo service ssh stop #手动关闭服务
-    sudo service ssh status #查询服务状态
-  ```
-
-* 4.install QQ
-  * Best way is use 'WEBQQ', it's an URL, you can make a URL link icon on ubuntu desktop!.
-
-* 5.install chrome
-  * download chrome deb package and use 'sudo dpkg -i google-chrome-stable_current_amd64.deb' to install.
-  * DONOT DOUBLE CLICK 'deb' file in dialog and it will NOT install chrome and final create a icon of it(it seems not install finished indeed!)!
-
-* 6.安装pycharm
-  * 先下载免费社区版本的pycharm,然后执行bin下面的pycharm.sh脚本就启动了图形界面(pycharm.sh)
-  * 其次参照如下链接,配置Project Interperter;因为一般有多个python,比如pycharm自带,ananconda如果你安装了,系统的python3或2如果你安装了,我选系统python3作为解析其),你选了哪个,pycharm会自动探测其依赖库的更新,一般ananconda好. https://www.cnblogs.com/fanmu/p/8010580.html
-
-* 7.解决apt-get循环依赖而无法安装lib库的问题
-  * 问题:遇到ubuntu系统中使用apt-get来安装某个lib库,但是A依赖B,C;B依赖D;D依赖A,E,这样循环依赖,没法单独安装每个lib库;
-  * 解决:其实只要你sudo apt-get install A,B,C,D,E //将循环依赖库一并写上就可!
-
-* 8.解决UBUNTU18.04插入USB无线鼠标无效问题
-  * 其实就是在未插入电源的情况下,默认会关闭USB设备,插入了电源,无线USB鼠标就能用了;
-    * TODO:暂未找到如何设定ubuntu18.04的关闭电源模式下禁用USB设备比如鼠标的开关或配置;
-  * TODO:暂未找到ubuntu18.04的调节鼠标大小的方法和命令;
 
 ### ubuntu18.04环境安装CUDA+CUDNN+TF
 
@@ -239,7 +187,44 @@ env.close()  //关闭env环境,dialog不能被gui关闭,只能用本行命令关
 
 
 
+### ubuntu18.04环境实用经验
 
-## 持续更新中...
+* 请参考持续更新的项目[computer-using-hints](http://freelogic.gitee.io/webpost/2018/05/27/computer-using-hints-%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9.html), 及[源码](https://gitee.com/freelogic/computer-using-hints.git)
+
+* 1.ubuntu18.04切换默认的python方法:
+  * 链接: https://segmentfault.com/q/1010000003713912
+  * 命令:
+    ```
+    # 如下命令用来定义2种python
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100     
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+    
+    # 如下命令用来切换
+    sudo update-alternatives --config python
+    ```
+
+* 3.ssh登录ubuntu18.04
+  * 原理:默认ubuntu系统安装后有ssh,而没有sshd,所以其他服务器要通过ssh链接ubuntu需要如下
+  ```
+    安装指导:https://jingyan.baidu.com/article/359911f5a5b74857fe0306c4.html
+    首先看看自己的Ubuntu是不是已经安装或启用了ssh服务，执行ps -e |grep ssh
+    如果只有ssh-agent 这个是ssh-client客户端服务，如果没有sshd，继续如下安装ssh-server
+    安装sshd: 
+    sudo apt install openssh-server
+
+    手动操作开启/关闭ssh服务相关命令：
+    sudo service ssh start #手动启动服务
+    sudo service ssh stop #手动关闭服务
+    sudo service ssh status #查询服务状态
+  ```
+
+* 6.安装pycharm
+  * 先下载免费社区版本的pycharm,然后执行bin下面的pycharm.sh脚本就启动了图形界面(pycharm.sh)
+  * 其次参照如下链接,配置Project Interperter;因为一般有多个python,比如pycharm自带,ananconda如果你安装了,系统的python3或2如果你安装了,我选系统python3作为解析其),你选了哪个,pycharm会自动探测其依赖库的更新,一般ananconda好. https://www.cnblogs.com/fanmu/p/8010580.html
+
+* 7.解决apt-get循环依赖而无法安装lib库的问题
+  * 问题:遇到ubuntu系统中使用apt-get来安装某个lib库,但是A依赖B,C;B依赖D;D依赖A,E,这样循环依赖,没法单独安装每个lib库;
+  * 解决:其实只要你sudo apt-get install A,B,C,D,E //将循环依赖库一并写上就可!
+
 
 ## END

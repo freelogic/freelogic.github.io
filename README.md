@@ -49,4 +49,5 @@
 * [github的page服务](https://pages.github.com/)
 * [码云(gitee.com)的page服务](http://git.mydoc.io/?t=154714)
 
-
+## 5.其他
+* 特别注意,github的更新和page重新编译的速度根据实际网络情况有所不同,而且时间上并不和国内同步,太新的时间戳和文章可能暂时看不到,第二天时间过了才会看到,请额外关注;

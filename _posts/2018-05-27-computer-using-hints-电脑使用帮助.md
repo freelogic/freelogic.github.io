@@ -24,7 +24,6 @@ modify_date: 2018-05-27
 
 正文:
 
-
 ## Content
 * 1-Basic OS Hints
   * 1.1-Ubuntu
@@ -36,16 +35,41 @@ modify_date: 2018-05-27
     * 1.1.6-Ubuntu18.04如何安装pycharm?
     * 1.1.7-Ubuntu下如何安装循环依赖的lib库?
     * 1.1.8-Ubuntu18.04解决USB无线鼠标插入后无法使用的问题? 
+    * 1.1.9-Ubuntu18.04下计算SHA1和MD5值? 
+    * 1.1.10-Ubuntu18.04下文件目录比较工具(类似beyondcompare)?     
+    * 1.1.11-Ubuntu18.04下安装类似notepad++的文本工具   
+    * 1.1.12-Ubuntu18.04下安装OCR工具(tesseract)
+    * 1.1.13-Ubuntu18.04下调节字体和鼠标样式及大小
+    * 1.1.14-Ubuntu18.04下测网速
+    * 1.1.15-查看Ubuntu18.04的硬件配置
+    * 1.1.16-Ubuntu18.04的apt-get命令如何安装指定版本?
+    * 1.1.17-Ubuntu18.04的ufw的简易防火墙操作
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
       * 2.1.1.1-GIT 
         * 2.1.1.1.1-如何从本地PUSH分支改动到多个远端GIT仓库(假设远端GIT仓库为多个备份镜像库且内容相同) ?
-  * 2.2 机器学习
+      * 2.1.1.2-GIT仓库
+        * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
+    * 2.1.2-JAVA
+      * 2.1.2.1-JDK 
+        * 2.1.2.1.1-JDK安装
+    * 2.1.3-DataBase
+      * 2.1.3.1-MYSQL 
+        * 2.1.3.1.1-MYSQL的安装
+    * 2.1.4-Testing
+      * 2.1.4.1-JMeter 
+        * 2.1.4.1.1-JMeter的安装
+        * 2.1.4.1.2-JMeter的分布式测试
+  * 2.2-机器学习
     * 2.2.1-环境安装 
       * 2.2.1.1-ubuntu   
         * 2.1.1.1.1-ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW    
-        * 2.1.1.1.2-ubuntu18.04环境安装OpenAI的GYM的强化学习环境    
+        * 2.1.1.1.2-ubuntu18.04环境安装OpenAI的GYM的强化学习环境 
+  * 2.3 大数据
+    * 2.3.1-日志 
+      * 2.3.1.1-ELK   
+        * 2.3.1.1.1-安装ELK   
 * 3-END
 
 
@@ -130,8 +154,90 @@ modify_date: 2018-05-27
   * 问题: ubuntu18.04可能默认在电池模式会关闭USB端口,则USB鼠标插入无法使用;
   * 解决: 插入电源,笔记本电脑就能堆新接入的无线USB鼠标感知并能使用了;
   * TODO:暂未找到如何设定ubuntu18.04在电源模式下禁用或弃用USB设备(如USB的WIFI鼠标)的配置;
-  * TODO:暂未找到ubuntu18.04中调节鼠标大小的方法和命令;
+
+#### 1.1.9 Ubuntu18.04下计算SHA1和MD5值? 
+* ubuntu下计算sha1/md5值
+  * 参考: [http://blog.sina.com.cn/s/blog_15e13208d0102w54j.html](http://blog.sina.com.cn/s/blog_15e13208d0102w54j.html)
+  * 命令: md5sum ./hoek-2.16.3.tgz > ./hoek-2.16.3.tgz.md5.txt    //假设你下载了tgz到当前目录
+  * 命令: sha1sum ./hoek-2.16.3.tgz > ./hoek-2.16.3.tgz.sha1.txt   //假设你下载了tgz到当前目录
+
+#### 1.1.10 Ubuntu18.04下文件目录比较工具(类似beyondcompare)?
+* Ubuntu下有免费工具meld,它非常类似beyondcompare,可以比较目录和文件,很好用!
+  * 安装: 在ubuntu搜索关键字"软件",打开"软件"(类似app store或安装应用商店)后,在它里面搜索关键字"meld",直接安装和启动;
+
+#### 1.1.11 Ubuntu18.04下安装类似notepad++的文本工具 
+* ubuntu下不能直接安装notepad++,但可以安装其家族的名为"notepadqq"的linux版本;
+  * 参考:[Ubuntu 16.04安装Notepadqq编辑器替代Notepad++](https://www.cnblogs.com/EasonJim/p/7225861.html)
+  * 安装:
   
+  ```
+    sudo add-apt-repository ppa:notepadqq-team/notepadqq
+    sudo apt-get update
+    sudo apt-get install notepadqq
+  ```
+
+#### 1.1.12 Ubuntu18.04下安装OCR工具(tesseract)
+* ubuntu下的OCR工具不多(至少没有win下的金山OCR,汉王OCR,紫光OCR等等),但免费预装的tesseract就非常好!
+  * ubuntu18.04自带tesseract4.00版本,可以识别中英文(中文识别需如下安装中文包),测试效果还不错,超过一些在线OCR网站(收费或免费),它是最新LSTM的神经网络及机器学习的内容,可以进一步学习;
+  * 安装:
+  
+  ```
+  
+    sudo apt-get install tesseract-ocr  //发现ubuntu18.04已经安装了最新的4.00版本
+    sudo apt-get install tesseract   //同上
+    sudo apt-get install tesseract-ocr-chi-sim //安装额外的中文简体识别包
+    tesseract //查看命令的格式和参数
+    tesseract --list-langs //查看支持的语言
+    tesseract ./yangpu-xiaoxue.jpg yangpu-xiaoxue.txt -l chi_sim  //进行识别命令并输出结果txt文件;
+    # 性能说明: 中文识别(4MB的JPG包含2列450行文字)运用到了4个core,大约30秒左右,未查是否使用了GPU,仅供参考;
+  
+  ```
+  
+  * 参考1:[https://blog.csdn.net/dcrmg/article/details/78128026](https://blog.csdn.net/dcrmg/article/details/78128026)
+  * 参考2(详细):[https://blog.csdn.net/yimingsilence/article/details/51353772](https://blog.csdn.net/yimingsilence/article/details/51353772)
+  * 第三方UI界面软件: 在ubuntu的"软件/software"中查找"gimagereader"关键字并安装它,它是tesseract的一个UI界面,非常好用!
+  * 缺陷:tesseract不能自动转换为带表格的XLS文件格式,而某些在线OCR(如下),或win下的OCR支持中文版面识别,能将table转换为XLS的表格导出;
+  * 其他OCR: 在线OCR有免费和收费版本,较多,推荐这个,它自持表格识别并转换为xls表格,免费的最大能识别10MB以上的JPG;
+    * [https://zhcn.109876543210.com/](https://zhcn.109876543210.com/)
+
+#### 1.1.13 Ubuntu18.04下调节字体和鼠标样式及大小
+* 配置ubuntu18.04的字体大小和鼠标大小
+  * 参考: [https://jingyan.baidu.com/article/a681b0de6ad12c3b1943466d.html](https://jingyan.baidu.com/article/a681b0de6ad12c3b1943466d.html)
+  * 说明: 虽说据悉ubuntu18.04弃用了unity界面,但还是根据参考资料,尝试并确认了如下方法可用;
+    * 命令: sudo apt-get install unity-tweak-tool  //安装了untiy tweak配置台;
+    * 完成后请搜索"tweak"关键字, 找到并打开tweak后,可以font样式大小,也可以配置鼠标样式大小(但大小不能自由调节);
+
+#### 1.1.14 Ubuntu18.04下测网速
+* ubuntu18.04的网络测速
+  * 问题: 因网络不稳定,尤其是路由器滚烫,网络连不上,所以想测试网速,而ubuntu没有类似win下360的宽带测速器,方法如下;
+  * 参考: [https://www.cnblogs.com/linuxprobe/p/5728126.html](https://www.cnblogs.com/linuxprobe/p/5728126.html)
+  * 命令: 
+    
+    ```
+    
+    sudo apt-get install speedtest-cli  //安装speedtest-cli, 及设你是python3且升级到pip3命令
+    speedtest-cli --h  //查看帮助
+    speedtest-cli --share  //执行网络测速命令
+    speedtest-cli --list   //获取测速使用的speedtest网站配置的各个目标网站的名字和距离公里数的大列表;
+    
+    ```
+  * 在线UI界面: speedtest也提供在线界面供查看测试过程和结果:[http://www.speedtest.cn/]()http://www.speedtest.cn/)
+
+#### 1.1.15 查看Ubuntu18.04的硬件配置
+* 查看ubuntu硬件配置
+  * 方法1: 命令sudo lshw  //返回CPU/MEM/DISK/GPU/USB等信息
+  * 方法2: 在搜索中输入"system", 打开"system profiler and benchmark", 其实就是将lshw的图形化,看起来方便而已;
+* 特别主义,ubuntu这个linux系统,对于笔记本电脑的充电模式或电池模式的切换处理,及USB设备的激活等,不是特别好,建议:
+  * 如果无线USB/WIFI鼠标,甚至touchpad和键盘无效了,请插入电源再试试看;
+  * 或者因为电源模式变化,导致无法登录,鼠标动但键盘无效无法输入密码,则可以尝试短按power键来休眠并恢复,尝试激活键盘;
+
+#### 1.1.16 Ubuntu18.04的apt-get命令如何安装指定版本?
+* apt-get安装指定版本
+  * 命令: sudo apt-get install package=version
+  
+#### 1.1.17 Ubuntu18.04的ufw的简易防火墙操作
+* ubuntu的ufw安装和使用
+  * TODO: ubuntu的ufw安装和使用  
 
 
 ## 2. Special Topic Hints
@@ -155,14 +261,147 @@ modify_date: 2018-05-27
      url = https://gitlab.com/<user-account>/<repo-name>.git
 
    ```
-   
+
+##### 2.1.1.2 GIT仓库
+
+###### 2.1.1.2.1 无法注册新GITLAB帐号且忘记老帐号密码怎么办?
+* 如果无法注册GITLAB帐号,可能是因为register new account需要用到google的认证图形识别控件,但国内被墙了,请翻墙再测试;
+  * 你也可以用github帐号,授权其登录gitlab,一样用,还更方便和一致,忘记密码也可以恢复如下描述;
+* 如何进入gitlab帐号(忘记密码和关联email的情况下)?
+  * 如果gitlab帐号和github同名或绑定; 那么用github帐号登录到gitlab当中, 然后可以修改password和关联email;
+
+#### 2.1.2 JAVA
+
+##### 2.1.2.1 JDK 
+
+###### 2.1.2.1.1 JDK安装
+* ubuntu18.04 安装JDK1.8
+  * 参考: [https://blog.csdn.net/u010307119/article/details/52081429](https://blog.csdn.net/u010307119/article/details/52081429);
+    * 含多版本JDK的默认配置修改,最后部分描述,如果只安装一个版本的JDK就不需要设定默认级别并启用了.
+  * 下载: http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+    * 需注册oracle帐号,随意用一个email注册就行;
+  * 安装: 
+  
+  ```
+  
+  sudo tar xvzf jdk-8u102-linux-x64.tar.gz //解压二进制安装包(非源码包需要编译)
+  sudo chmod 777 /etc/profile   //如果profile文件是644模式,可以先转变为777,修改完了再chmod回去;
+  sudo vi /etc/profile  //配置环境文件
+  #在profile文件尾部添加
+      #set java environment
+      export JAVA_HOME=/home/goodong/Downloads/jdk1.8.0_162 
+      export JRE_HOME=${JAVA_HOME}/jre  
+      export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+      export PATH=${JAVA_HOME}/bin:$PATH
+
+  java -vesion 或 javac //测试java安装是否正常,显示出版本号则算完成; 
+
+  #多JDK版本设定:
+    sudo update-alternatives --install "/usr/bin/java" "java" "/home/youraccount/tool/jdk1.8.0_162/bin/java" 1 
+    设置JRE可用: sudo update-alternatives --install "/usr/bin/javac" "javac" "/home/youraccount/tool/jdk1.8.0_162/bin/javac" 1 
+    设置JDK可用: sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/home/youraccount/tool/jdk1.8.0_162/bin/javaws" 1 
+    设置Java Web可用: sudo update-alternatives --set java /home/youraccount/tool/jdk1.8.0_162/bin/java 
+    设置Java运行时环境: sudo update-alternatives --set javac /home/youraccount/tool/jdk1.8.0_162/bin/javac 
+    设置Javac编译器:  sudo update-alternatives --set javaws /home/youraccount/tool/jdk1.8.0_162/bin/javaws
+
+  # 其他JDK版本情况: JDK9据悉不太好用,JDK10目前较新,用的人不多,还需要观察!
+
+  ```
+  
+#### 2.1.3 DataBase
+
+##### 2.1.3.1 MYSQL 
+
+###### 2.1.3.1.1 MYSQL的安装
+* ubuntu下安装mysql
+  * 参考: [https://ask.csdn.net/questions/376087](https://ask.csdn.net/questions/376087), 释放tar.gz版本并安装;
+  * 错误1: /usr/local/mysql3306/bin/mysqld: error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory;
+    * 则需安装 sudo apt-get install libaio-dev  //安装mysql需要的库
+
+```
+
+    修改默认密码: mysql安装的时候会提示,其默认root的密码是"#P;eijqF<1Y6",千万别忘记,记录下来,
+                然后登录后mysql会会被要求必须马上修改密码并提示错误如下：You must reset your password using ALTER USER statement before executing this statement. 
+                你可以执行如下命令(参考:https://blog.csdn.net/dotalee/article/details/72576667)
+    ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;	//重设密码且永不过期
+    ./mysqladmin -u root -p shutdown //关闭mysql (参考链接:https://blog.csdn.net/zyc_love_study/article/details/74347977)
+    ps -ef|grep mysql  //查看mysql进程;
+
+```
+
+#### 2.1.4 Testing
+
+##### 2.1.4.1 JMeter 
+
+###### 2.1.4.1.1 JMeter的安装
+* 参考: [https://www.cnblogs.com/EasonJim/p/7443875.html]()https://www.cnblogs.com/EasonJim/p/7443875.html)
+* 官网老版本下载链接: [ https://archive.apache.org/dist/jmeter/binaries/](https://archive.apache.org/dist/jmeter/binaries/)
+* 安装: 
+    
+    ```
+    
+    tar -zxvf apache-jmeter-4.0.tgz    //解压缩二进制包
+    sudo mv apache-jmeter-4.0 /usr/local/apache-jmeter-4.0/        //拷贝到合适的目录
+    sudo ln -s /usr/local/apache-jmeter-4.0/ /usr/local/jmeter     //建立软链接,是调用时候不用了解版本,方便以后升级,方法类似cuda的安装和配置
+    /usr/local/jmeter/bin/jmeter.sh  //启动jmeter
+    ps -ef|grep jmeter   //查看进程并可kill杀掉无用jmeter进程
+    
+    ```
+
+###### 2.1.4.1.2 JMeter的分布式测试
+* 分布式JMETER使用指南
+  * A.场景: 
+    * 1台win10(master兼slave)；1台linux的slave; 两者同一网段,能ping通(如果不同网段TCP包能路由到也行);
+      * master是主控jmeter,slave(也叫agent)是受控jmeter,master自己也可以作为一个slave被自己控制;
+    * master如果独自自己使用,直接启动"../bin/jmeter"就行(win10下是运行"..\bin\jmeter.bat");
+    * agent需要被控制,则应该先自行启动"../bin/jmeter-server"就行(win10下是运行"..\bin\jmeter-server.bat");并等待被master控制和启停任务;
+    * 如果master自己也做为一个agent来运行测试脚本,而且自己也作为主控master,则必须先参照agent启动"jmeter-server"命令,然后再启动用于主控的"jmeter"命令;
+    * 以上是简述场景情况及启动顺序,具体配置如下,配置妥当方能启动命令,执行主控和被控的多个jmeter来分布式执行test脚本,联合压测;
+
+  * B.配置agent(slave)受控jmeter端:
+    * 在agent机器上需修改"..\jmeter\bin\jmeter.properties",如下:
+      * remote_hosts=10.30.33.121:1099   //121是agent本机内网IP,端口一般为1099,不清楚则不要修改;
+      * server.rmi.ssl.disable=true  //默认是注释掉的,如果不想要设定ssl(安全但配置复杂),则必须在这行显式的设定为true,以便jmeter知道关闭ssl的使用!
+    * 在agent机器上还要修改启动脚本"..\jmeter\bin\jmeter-server",如下:
+      * RMI_HOST_DEF=-Djava.rmi.server.hostname=10.30.33.121  //默认是注释掉的,因jmeter可能有BUG,会报错,则需打开,并添加agent的IP;
+      * ${DIRNAME}/jmeter ${RMI_HOST_DEF} -Dserver_port=${SERVER_PORT:-2099} -s -j jmeter-server.log "$@"  //仅修改为2099端口,为了不合1099端口冲突;
+        * 如果是win环境,则"..\jmeter\bin\jmeter-server"内容和ubuntu下不同,也不能如此配置,目前看win下没有bug,无需修改此命令文件;
+    * 启动agent机器,运行"..\jmeter\bin\jmeter-server"  //用&结尾放在后台运行也行,但看不到log输出,建议前台运行;
+      * terminal里面看到"Created remote object: UnicastServerRef2 [liveRef: [endpoint:[10.30.33.121:32881](local),objID:[-a8824d7:16390698d96:-7fff, 3759878571045247869]]]"则agent启动正常,等待master管理；
+      * master机器自己也作为agent的话,同样需要先配置如上并启动,等待自己的另一个主控进程接管;
+      * agent收到master的任务的下发和任务结束式,会打印log"...start..."和"...finish";
+      * 可以将agent的log级别调为debug模式,方便排错;具体配置文件是"log4j2.xml"
+  
+  * C.配置master主控jmeter端:
+    * master机器上需修改"..\jmeter\bin\jmeter.properties",如下:
+      * remote_hosts=10.30.33.121:2099, 10.30.33.122:1099   //2099是匹配上述agent121的,而1099是master自己也作为agent用的默认1099,两者也可以一样;
+      * server.rmi.ssl.disable=true  //这个配置和agent一样,都显式关闭ssl;   
+      * win10版本的jmeter4.0的jmeter-server.bat没有bug,无需修改!而如果是linux做agent,则脚本jmeter-server就要如上述agent来修改!
+    * master机器也希望能作为agent工作,那么需先启动"jmeter-server.bat"命令;
+      * win操作系统下的"jmeter-server.bat"命令无BUG,所以无需像上述B当中的描述来修改linux下的"../jmeter/bin/jmeter-server"命令;
+    * 启动jmeter.bat主控程序;
+      * 启动分布式测试任务: 在"start remote"菜单的子菜单看到了所有agent的列表(举例有121和122自己)；可以单个或全部启动agent；
+        * remote的操作,容易超时,容易返回错误,建议一个个启动agent,如果数量不多的话;网络好,机器快,脚本简单则可以一起启动;
+      * 启动单机模式测试任务: 即便在以上情况,agent都在线能看见受控,但也可以不用菜单"start remote", 而直接用"start"菜单来忽略分布式任务下发,而让master当作单机模式使用,自己执行脚本;
+      * 分布式模式下,主控master机器上,建议用"聚合报告"查看测试结果,并确认多个agent的CPU/MEM;并用"结果树"只看偶发错误;
+
+  * D.问题排查: 
+    * 如果master可以下任务给slave,能通,但debug级别日志报错(jmeter-server.log),可能网络复杂,举例如下:
+      * 比如master或slave开了虚拟机和虚拟网卡导致多个IP地址,网络情况复杂,你需要关闭和禁用其他IP,并重新下发任务到agent来尝试;
+    * 分布式测试情况下,主控master会分发脚本任务给多个agent,但不会下发数据,需自己拷贝数据(尤其是大量数据);
+    * 如果master和agent上面目录不一样,或者1个win和1个ubuntu linux,则测试脚本一旦配置了路径,则格式不对,肯定报错,文件名是通用的;
+      * 建议将数据放在"..\jmeter"或"..\jmeter\bin"下,而在脚本中不要配置path,这样就做到了脚本在多个OS下兼容;
+    * 如果端口1099,2099等没有通,主控master无法发任务到agent,而不是任务执行时候debug的log日志报错,则多半是防火墙屏蔽了端口port;
+      * 建议如果是WIN,进入控制面板,可以设定防火墙的路由规则,可以放开port口的出入,也可以将master/agent的ip都列为全部放开!
+      * 如果是linux,比如ubuntu,则可以用iptables防火墙设定规则来放开PORT或IP,因为最新ubuntu18.04简化了iptables,用工具UFW来控制防火墙,请查相关脚本,UFW使用较为方便!
+
 ### 2.2 机器学习
 
 #### 2.2.1 环境安装 
 
 ##### 2.2.1.1 ubuntu   
    
-###### 2.1.1.1.1 ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW
+###### 2.2.1.1.1 ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW
 * 1.查看nvidia显卡配置
 
   ```
@@ -274,7 +513,7 @@ modify_date: 2018-05-27
   * 这里仅仅是我这种硬件软件配置的成功案例,供看管参考,不代表原理和其他软硬件配置都能成功,还需尝试!!!
     * 另外,我CUDA的几个patch忘记安装了,估计是它修改兼容性和BUG的,目前不出其他问题,我就不安装了,怕有问题;
 
-###### 2.1.1.1.2 ubuntu18.04环境安装OpenAI的GYM的强化学习环境
+###### 2.2.1.1.2 ubuntu18.04环境安装OpenAI的GYM的强化学习环境
 * 1.安装GYM环境
   * 通常做法,用命令: pip3 install gym[all]  //这里假设ubuntu已经安装升级了python3和pip3,且按照上述方法切换默认python为PY3而不是PY2;
   * 问题:一般你会遇到结果提示,Box2D和atari-py安装失败,重复上述命令,再次安装全部gym[all],就更清晰的看到只有此2模块没有安装成功(和win10一致);
@@ -329,8 +568,18 @@ modify_date: 2018-05-27
     * 安装tkinter: sudo apt install python3-tk   //特别注意,不是 sudo apt install python-tk!!!
 
 
+### 2.3 大数据
+
+#### 2.3.1 日志 
+
+##### 2.3.1.1 ELK   
+   
+###### 2.3.1.1.1 安装ELK
+* ubuntu18.04下安装ELK日志分析套件
+  * 官网: [https://github.com/elastic](https://github.com/elastic), 它维护了多个ELK组件,包括xpack(即将开源)机器学习组件;
+  * TODO: 带添加安装ELK步骤;
 
 
+## 3. END
 
 
-## END

@@ -3,7 +3,7 @@ layout: post
 title: 2018-05-26-computer-using-hints-电脑使用帮助
 key: 20180526
 tags: ubuntu cuda cudnn tensorflow gym qq ssh
-modify_date: 05-26
+modify_date: 2018-05-26
 ---
 
 # 2018-05-27-computer-using-hints-电脑使用帮助

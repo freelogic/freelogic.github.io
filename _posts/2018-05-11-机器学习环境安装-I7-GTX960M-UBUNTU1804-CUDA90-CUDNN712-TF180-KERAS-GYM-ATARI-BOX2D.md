@@ -3,7 +3,7 @@ layout: post
 title: 2018-05-11-机器学习环境安装-I7-GTX960M-UBUNTU1804-CUDA90-CUDNN712-TF180-KERAS-GYM-ATARI-BOX2D
 key: 20180511
 tags: 机器学习 cuda cudnn tensorflow gym
-modify_date: 05-11
+modify_date: 2018-05-11
 ---
 
 

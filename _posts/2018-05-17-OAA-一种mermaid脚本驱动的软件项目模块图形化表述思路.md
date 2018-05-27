@@ -3,7 +3,7 @@ layout: post
 title: 2018-05-17-OAA-一种mermaid脚本驱动的软件项目模块图形化表述思路
 key: 20180517
 tags: OAA flow chart sequence diagram 泳道图 时序图 图表 OAA PM Master
-modify_date: 05-17
+modify_date: 2018-05-17
 ---
 
 

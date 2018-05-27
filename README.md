@@ -26,7 +26,7 @@
 <br>|[2018-04-12-一种实现基于区块链的知识图谱的想法](./_posts/2018-04-12-一种实现基于区块链的知识图谱的想法.md)
 <br>|[2018-05-11-机器学习环境安装-I7-GTX960M-UBUNTU1804-CUDA90-CUDNN712-TF180-KERAS-GYM-ATARI-BOX2D](./_posts/2018-05-11-机器学习环境安装-I7-GTX960M-UBUNTU1804-CUDA90-CUDNN712-TF180-KERAS-GYM-ATARI-BOX2D.md)
 <br>|[2018-05-17-OAA-一种mermaid脚本驱动的软件项目模块图形化表述思路](./_posts/2018-05-17-OAA-一种mermaid脚本驱动的软件项目模块图形化表述思路.md)
-<br>|[2018-05-27-computer-using-hints-电脑使用帮助](./_posts/2018-05-27-computer-using-hints-电脑使用帮助)
+<br>|[2018-05-26-computer-using-hints-电脑使用帮助](./_posts/2018-05-26-computer-using-hints-电脑使用帮助)
 
 
 

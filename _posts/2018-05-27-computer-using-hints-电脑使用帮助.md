@@ -51,6 +51,7 @@ modify_date: 2018-05-27
         * 2.1.1.1.1-如何从本地PUSH分支改动到多个远端GIT仓库(假设远端GIT仓库为多个备份镜像库且内容相同) ?
       * 2.1.1.2-GIT仓库
         * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
+        * 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
     * 2.1.2-JAVA
       * 2.1.2.1-JDK 
         * 2.1.2.1.1-JDK安装
@@ -269,6 +270,12 @@ modify_date: 2018-05-27
   * 你也可以用github帐号,授权其登录gitlab,一样用,还更方便和一致,忘记密码也可以恢复如下描述;
 * 如何进入gitlab帐号(忘记密码和关联email的情况下)?
   * 如果gitlab帐号和github同名或绑定; 那么用github帐号登录到gitlab当中, 然后可以修改password和关联email;
+
+###### 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
+* 问题：如果新安装pycharm,第一次checkout一个远端git仓库repo的项目project，但是提示报错如上，其实是git远端是私服，而ubuntu本地没配置SSH认证，或者GIT远端认证过期了；
+* 解决：关闭GIT的SSH认证，因为私服GIT往往不可能像github这样全球公开且有SSH认证证书的站点，所以私服往往不配置证书，而pycharm需要忽略他，其实不是pycharm忽略是ubuntu系统忽略；
+  * 参考： [参考](http://quabr.com/21181231/server-certificate-verification-failed-cafile-etc-ssl-certs-ca-certificates-c)
+  * 命令： export GIT_SSL_NO_VERIFY=1 //Open your terminal and run following command, finally restart your pycharm from cmd like "./bin/pycharm.sh"；
 
 #### 2.1.2 JAVA
 

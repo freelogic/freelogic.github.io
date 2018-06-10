@@ -3,10 +3,10 @@ layout: post
 title: 2018-05-27-computer-using-hints-电脑使用帮助
 key: 20180527
 tags: ubuntu cuda cudnn tensorflow gym qq ssh
-modify_date: 2018-05-27
+modify_date: 2018-06-10
 ---
 
-# 2018-05-27-computer-using-hints-电脑使用帮助
+# 2018-06-10-computer-using-hints-电脑使用帮助
 
 
 说明：
@@ -44,6 +44,12 @@ modify_date: 2018-05-27
     * 1.1.15-查看Ubuntu18.04的硬件配置
     * 1.1.16-Ubuntu18.04的apt-get命令如何安装指定版本?
     * 1.1.17-Ubuntu18.04的ufw的简易防火墙操作
+    * 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+    * 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+    * 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
+    * 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+    * 1.1.22-Ubuntu18.04如何安装rpm包
+    * 1.1.23-Ubuntu18.04的各种安装集锦
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -52,6 +58,7 @@ modify_date: 2018-05-27
       * 2.1.1.2-GIT仓库
         * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
         * 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
+      * 2.1.1.3-GITLAB安装
     * 2.1.2-JAVA
       * 2.1.2.1-JDK 
         * 2.1.2.1.1-JDK安装
@@ -129,6 +136,11 @@ modify_date: 2018-05-27
 * install QQ
   * Best way is use "[WEBQQ(http://web2.qq.com/)](http://web2.qq.com/)" instead of install local program;
   * WEBQQ is an URL, you can make a URL link icon on desktop of ubuntu;
+* wine+麒麟版本wine-qqintl的说明
+  * 参考： https://www.cnblogs.com/linux130/p/5694840.html
+  * 失败： 首先顺利安装wine和winetricks，但是按照以上参考用dpkg安装麒麟版本的wine-qqintel后，安装顺利，启动无反映，甚至有一次将ubuntu18.04弄死机了！
+  * 推测： wine比较好资源； 麒麟版定制的qq不适合ubuntu，毕竟麒麟版本的ubuntu是一个ubuntu的中文子集，有一定特殊性；
+  * 结论： wine有一定风险，容易中win的病毒，速度慢，好资源，而且兼容性不好，暂时还是用webqq；
 
 #### 1.1.5 Ubuntu18.04如何安装chrome?
 * install chrome
@@ -240,6 +252,79 @@ modify_date: 2018-05-27
 * ubuntu的ufw安装和使用
   * TODO: ubuntu的ufw安装和使用  
 
+#### 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+* 说明：ubuntu不如win10，可以将exe文件或其他文件直接拖到桌面来建立一个lnk文件，而是需要单独建立desktop文件且自己填写相关字段；
+* 参考：[Ubuntu怎么添加桌面快捷启动方式](https://jingyan.baidu.com/article/2d5afd6929699185a2e28ed4.html)
+* 举例：请参考我本地pycharm的桌面desktop文件；
+  * "Icon"字段是连接ico图标的，如下暂时没有先空着；
+  * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
+  * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
+```
+
+[Desktop Entry]
+Name=pycharm
+Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
+Icon=
+Type=Application
+StartupNotify=true
+GenericName[zh_CN]=pycharm CE
+Comment[zh_CN]=pycharm社区版
+
+```
+
+#### 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+* 说明：dpkg是ubuntu的包管理；
+* 参考：
+  * [1](http://www.xiazaiba.com/jiaocheng/27592.html)
+  * [2](https://zhidao.baidu.com/question/1691933368850239588.html)
+* 举例：
+
+```
+
+# list deb packages in current folder
+
+$ ll
+drwx------ 2 xx   xx        4096 7月   1  2014 ./
+drwxr-xr-x 4 xx   xx        4096 5月  31 07:58 ../
+-rw-r--r-- 1 root root   1607142 1月   3  2014 fonts-wqy-microhei_0.2.0-beta-2_all.deb
+-rw-r--r-- 1 root root      2566 1月   3  2014 ttf-wqy-microhei_0.2.0-beta-2_all.deb
+-rw-r--r-- 1 root root 123289302 5月   3  2014 wine-qqintl_0.1.3-2_i386.deb
+
+sudo dpkg -I fonts-wqy-microhei_0.2.0-beta-2_all.deb  # 查看deb包的信息，此非安装；
+sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
+sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
+
+```
+
+#### 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
+
+#### 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+* ubuntu安装wine
+  * 可以在ubuntu的software里面搜索“wine”关键字，然后安装3.0.1最新稳定版，而不是3.9.0的开发最新版本；
+  * 同样方法可以安装”winetricks“，它启动后，自动扫描ubuntu的wine环境的缺漏dll，并一一安装，很方便;
+* 警告：
+  * 经过wine试用，发现wine还是比较不稳定的，经常导致了ubuntu的报错，删除后报错明显少了;
+  * 而且wine容易让linux感染win下面的病毒，因为wine将win底层api调用转换为linux的底层api调用;
+
+#### 1.1.22-Ubuntu18.04如何安装rpm包
+* 说明
+  * rpm是suselinux的安装包，而不是centos/debian/ubuntu家族的linux，格式略有不同;
+  * ubuntu建议，将rpm包转换为的deb包格式，并用ubuntu的dpkg的包管理来处理，具体方法如下;
+  * 参考：https://www.linuxidc.com/Linux/2017-08/146269.htm
+
+```
+
+apt-get install alien //安装alien模块;
+alien packageabc.rpm     //使用alien将rpm包转换成deb格式的包;
+dpkg -I packageabc.deb   //-I参数是查看pakcage信息，其他参数自己dpkg不带参数看help提示;
+dpkg -i package.deb      //通过dpkg安装deb格式的包
+//ubuntu的 apt-get模块其实后台也是用dpkg来管理包的，ubuntu官方建议尽量用apt/dpkg来管理包;
+
+```
+
+#### 1.1.23-Ubuntu18.04的各种安装集锦
+* 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
+
 
 ## 2. Special Topic Hints
 
@@ -277,6 +362,33 @@ modify_date: 2018-05-27
   * 参考： [参考](http://quabr.com/21181231/server-certificate-verification-failed-cafile-etc-ssl-certs-ca-certificates-c)
   * 命令： export GIT_SSL_NO_VERIFY=1 //Open your terminal and run following command, finally restart your pycharm from cmd like "./bin/pycharm.sh"；
 
+##### 2.1.1.3-GITLAB安装
+* 参考：
+  * [在ubuntu16上搭建gitlab](https://blog.csdn.net/qq_36467463/article/details/78283874)
+    * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;    
+  * [gitlab备份、还原及迁移(经验证可行)](https://www.cnblogs.com/kowloon/p/7504140.html)
+    * 备份包必须放置在指定的“backup”下，如“/var/opt/gitlab/backups/1528390913_2018_06_08_10.3.0_gitlab_backup.tar”
+    * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”    
+  * [修改gitlab的root密码](https://jingyan.baidu.com/article/6525d4b181bd41ac7d2e94af.html)
+
+```
+sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
+sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
+
+# 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+/opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
+# 看到提示符变为“irb(main):001:0>”就对了;
+irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
+=> #<User id:1 @root>                         //输出证明已经查到并选中了root用户
+irb(main):002:0> user.password='123456'       //修改帐号密码
+=> "123456"                                   //输出修改后的新密码，就是上面你给的新密码
+irb(main):003:0> user.save                    //保存用户信息
+Enqueued ActionMailer::DeliveryJob (Job ID: 18b1dbf3-93bf-4859-a190-b0fca6c0654d) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", gid://gitlab/User/1
+=> true                                       //保存结果为true，搞定;
+irb(main):004:0> quit                         //退出rails环境;
+
+```
+  
 #### 2.1.2 JAVA
 
 ##### 2.1.2.1 JDK 
@@ -588,5 +700,4 @@ modify_date: 2018-05-27
 
 
 ## 3. END
-
 

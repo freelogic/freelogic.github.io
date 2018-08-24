@@ -259,18 +259,18 @@ modify_date: 2018-06-10
   * "Icon"字段是连接ico图标的，如下暂时没有先空着；
   * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
   * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
-```
+  
+    ```
+    [Desktop Entry]
+    Name=pycharm
+    Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
+    Icon=
+    Type=Application
+    StartupNotify=true
+    GenericName[zh_CN]=pycharm CE
+    Comment[zh_CN]=pycharm社区版
 
-[Desktop Entry]
-Name=pycharm
-Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
-Icon=
-Type=Application
-StartupNotify=true
-GenericName[zh_CN]=pycharm CE
-Comment[zh_CN]=pycharm社区版
-
-```
+    ```
 
 #### 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
 * 说明：dpkg是ubuntu的包管理；
@@ -279,22 +279,22 @@ Comment[zh_CN]=pycharm社区版
   * [2](https://zhidao.baidu.com/question/1691933368850239588.html)
 * 举例：
 
-```
-
-# list deb packages in current folder
-
-$ ll
-drwx------ 2 xx   xx        4096 7月   1  2014 ./
-drwxr-xr-x 4 xx   xx        4096 5月  31 07:58 ../
--rw-r--r-- 1 root root   1607142 1月   3  2014 fonts-wqy-microhei_0.2.0-beta-2_all.deb
--rw-r--r-- 1 root root      2566 1月   3  2014 ttf-wqy-microhei_0.2.0-beta-2_all.deb
--rw-r--r-- 1 root root 123289302 5月   3  2014 wine-qqintl_0.1.3-2_i386.deb
-
-sudo dpkg -I fonts-wqy-microhei_0.2.0-beta-2_all.deb  # 查看deb包的信息，此非安装；
-sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
-sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
-
-```
+    ```
+    
+    # list deb packages in current folder
+    
+    $ ll
+    drwx------ 2 xx   xx        4096 7月   1  2014 ./
+    drwxr-xr-x 4 xx   xx        4096 5月  31 07:58 ../
+    -rw-r--r-- 1 root root   1607142 1月   3  2014 fonts-wqy-microhei_0.2.0-beta-2_all.deb
+    -rw-r--r-- 1 root root      2566 1月   3  2014 ttf-wqy-microhei_0.2.0-beta-2_all.deb
+    -rw-r--r-- 1 root root 123289302 5月   3  2014 wine-qqintl_0.1.3-2_i386.deb
+    
+    sudo dpkg -I fonts-wqy-microhei_0.2.0-beta-2_all.deb  # 查看deb包的信息，此非安装；
+    sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
+    sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
+    
+    ```
 
 #### 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
 
@@ -312,15 +312,15 @@ sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已
   * ubuntu建议，将rpm包转换为的deb包格式，并用ubuntu的dpkg的包管理来处理，具体方法如下;
   * 参考：https://www.linuxidc.com/Linux/2017-08/146269.htm
 
-```
-
-apt-get install alien //安装alien模块;
-alien packageabc.rpm     //使用alien将rpm包转换成deb格式的包;
-dpkg -I packageabc.deb   //-I参数是查看pakcage信息，其他参数自己dpkg不带参数看help提示;
-dpkg -i package.deb      //通过dpkg安装deb格式的包
-//ubuntu的 apt-get模块其实后台也是用dpkg来管理包的，ubuntu官方建议尽量用apt/dpkg来管理包;
-
-```
+    ```
+    
+    apt-get install alien //安装alien模块;
+    alien packageabc.rpm     //使用alien将rpm包转换成deb格式的包;
+    dpkg -I packageabc.deb   //-I参数是查看pakcage信息，其他参数自己dpkg不带参数看help提示;
+    dpkg -i package.deb      //通过dpkg安装deb格式的包
+    //ubuntu的 apt-get模块其实后台也是用dpkg来管理包的，ubuntu官方建议尽量用apt/dpkg来管理包;
+    
+    ```
 
 #### 1.1.23-Ubuntu18.04的各种安装集锦
 * 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
@@ -365,29 +365,38 @@ dpkg -i package.deb      //通过dpkg安装deb格式的包
 ##### 2.1.1.3-GITLAB安装
 * 参考：
   * [在ubuntu16上搭建gitlab](https://blog.csdn.net/qq_36467463/article/details/78283874)
-    * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;    
+    * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;
   * [gitlab备份、还原及迁移(经验证可行)](https://www.cnblogs.com/kowloon/p/7504140.html)
     * 备份包必须放置在指定的“backup”下，如“/var/opt/gitlab/backups/1528390913_2018_06_08_10.3.0_gitlab_backup.tar”
     * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”    
   * [修改gitlab的root密码](https://jingyan.baidu.com/article/6525d4b181bd41ac7d2e94af.html)
 
-```
-sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
-sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
+    ```
+    sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
+    sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
+    
+    # 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+    /opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
+    # 看到提示符变为“irb(main):001:0>”就对了;
+    irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
+    => #<User id:1 @root>                         //输出证明已经查到并选中了root用户
+    irb(main):002:0> user.password='123456'       //修改帐号密码
+    => "123456"                                   //输出修改后的新密码，就是上面你给的新密码
+    irb(main):003:0> user.save                    //保存用户信息
+    Enqueued ActionMailer::DeliveryJob (Job ID: 18b1dbf3-93bf-4859-a190-b0fca6c0654d) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", gid://gitlab/User/1
+    => true                                       //保存结果为true，搞定;
+    irb(main):004:0> quit                         //退出rails环境;
+    
+    ```
+  * [Centos7下安装Gitlab操作](https://www.cnblogs.com/wenwei-blog/p/5861450.html)
+    * centos7需要[打开防火墙并开通端口比如7070](https://www.cnblogs.com/moxiaoan/p/5683743.html)；改动防火墙设定后一定要reload一下生效才行！
+    
+    ```
+    1. 邮件设定目前未测试成功： smtp/postfix这2个gitlab的支持的email，目前仅尝试关闭smtp，并用postfix邮件来设置，未测试成功！
+    2. centos7需要打开防火墙，客户端也需要开启相关端口，才能用浏览器看到；地址比如： “http://10.30.22.42:7070”；
+    3. 第一次打开主页比如(http://10.30.22.42:7070),会提示输入2边密码就是root管理员的密码（不是linux的root！），之后root就是管理gitlab的管理账号！
 
-# 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
-/opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
-# 看到提示符变为“irb(main):001:0>”就对了;
-irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
-=> #<User id:1 @root>                         //输出证明已经查到并选中了root用户
-irb(main):002:0> user.password='123456'       //修改帐号密码
-=> "123456"                                   //输出修改后的新密码，就是上面你给的新密码
-irb(main):003:0> user.save                    //保存用户信息
-Enqueued ActionMailer::DeliveryJob (Job ID: 18b1dbf3-93bf-4859-a190-b0fca6c0654d) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", gid://gitlab/User/1
-=> true                                       //保存结果为true，搞定;
-irb(main):004:0> quit                         //退出rails环境;
-
-```
+    ```
   
 #### 2.1.2 JAVA
 
@@ -437,16 +446,16 @@ irb(main):004:0> quit                         //退出rails环境;
   * 错误1: /usr/local/mysql3306/bin/mysqld: error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory;
     * 则需安装 sudo apt-get install libaio-dev  //安装mysql需要的库
 
-```
-
-    修改默认密码: mysql安装的时候会提示,其默认root的密码是"#P;eijqF<1Y6",千万别忘记,记录下来,
-                然后登录后mysql会会被要求必须马上修改密码并提示错误如下：You must reset your password using ALTER USER statement before executing this statement. 
-                你可以执行如下命令(参考:https://blog.csdn.net/dotalee/article/details/72576667)
-    ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;	//重设密码且永不过期
-    ./mysqladmin -u root -p shutdown //关闭mysql (参考链接:https://blog.csdn.net/zyc_love_study/article/details/74347977)
-    ps -ef|grep mysql  //查看mysql进程;
-
-```
+    ```
+    
+        修改默认密码: mysql安装的时候会提示,其默认root的密码是"#P;eijqF<1Y6",千万别忘记,记录下来,
+                    然后登录后mysql会会被要求必须马上修改密码并提示错误如下：You must reset your password using ALTER USER statement before executing this statement. 
+                    你可以执行如下命令(参考:https://blog.csdn.net/dotalee/article/details/72576667)
+        ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;	//重设密码且永不过期
+        ./mysqladmin -u root -p shutdown //关闭mysql (参考链接:https://blog.csdn.net/zyc_love_study/article/details/74347977)
+        ps -ef|grep mysql  //查看mysql进程;
+    
+    ```
 
 #### 2.1.4 Testing
 

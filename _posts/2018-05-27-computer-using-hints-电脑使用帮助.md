@@ -50,6 +50,9 @@ modify_date: 2018-06-10
     * 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
     * 1.1.22-Ubuntu18.04如何安装rpm包
     * 1.1.23-Ubuntu18.04的各种安装集锦
+  * 1.2-Centos
+    * 1.2.1-Centos7如何连接windows网络的某台PC的共享目录?
+    * 1.2.2 Centos7安装crontab
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -326,6 +329,20 @@ modify_date: 2018-06-10
 * 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
 
 
+### 1.2 Centos
+
+#### 1.2.1 Centos7如何连接windows网络的某台PC的共享目录?
+* centos下如何连接到windows网络的某台PC的共享目录:
+
+    ```
+    sudo mkdir /mnt/gitlab #centos下新建目录供连接
+    #在10.30.23.128上面建立用户gitlab和密码gitlab，并让他（或everyone用户）对共享目录(//10.30.23.128/gitlab)有只读权限，方便centos通过samba连接后拷贝文件！
+    sudo mount -t cifs -o username=gitlab,password=gitlab  //10.30.23.128/gitlab /mnt/gitlab #用samba client从centos连接到windows的PC上的共享目录
+    
+    ```
+#### 1.2.2 Centos7安装crontab
+* [安装crontab](https://www.cnblogs.com/lzhp/p/6087525.html)
+
 ## 2. Special Topic Hints
 
 ### 2.1 Programming
@@ -368,7 +385,8 @@ modify_date: 2018-06-10
     * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;
   * [gitlab备份、还原及迁移(经验证可行)](https://www.cnblogs.com/kowloon/p/7504140.html)
     * 备份包必须放置在指定的“backup”下，如“/var/opt/gitlab/backups/1528390913_2018_06_08_10.3.0_gitlab_backup.tar”
-    * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”    
+    * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”   
+    * 说明：因为要停止gitlab服务，比较慢，需要等待，不太方便将backup的整个过程作为自动化处理，而且涉及数据恢复，很复杂，需要手动操作才放心！ 
   * [修改gitlab的root密码](https://jingyan.baidu.com/article/6525d4b181bd41ac7d2e94af.html)
 
     ```

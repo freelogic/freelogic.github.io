@@ -53,6 +53,7 @@ modify_date: 2018-06-10
   * 1.2-Centos
     * 1.2.1-Centos7如何连接windows网络的某台PC的共享目录?
     * 1.2.2 Centos7安装crontab
+    * 1.2.3 Centos7的各种安装集锦
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -342,6 +343,16 @@ modify_date: 2018-06-10
     ```
 #### 1.2.2 Centos7安装crontab
 * [安装crontab](https://www.cnblogs.com/lzhp/p/6087525.html)
+* [利用crontab定时执行任务](https://www.cnblogs.com/jianqingwang/p/6726589.html)
+
+#### 1.2.3 Centos7的各种安装集锦
+* [Linux shell 获取目录下时间最新的文件的文件名](https://www.cnblogs.com/echo-valley/p/8268527.html)
+* [linux shell 字符串操作详解 （长度，读取，替换，截取，连接，对比，删除，位置 ）](https://www.cnblogs.com/gaochsh/p/6901809.html)
+* [linux中shell,awk,sed截取字符串方法总结](https://www.cnblogs.com/kinga/p/5772566.html)
+* [linux下awk内置函数的使用(split/substr/length)](https://www.cnblogs.com/sunada2005/p/3493941.html)
+* [Linux指令-yes](https://blog.csdn.net/u012313689/article/details/53065446)
+* [Linux命令之exit - 退出当前shell【返回值状态】](https://www.cnblogs.com/itcomputer/p/4157859.html)
+
 
 ## 2. Special Topic Hints
 

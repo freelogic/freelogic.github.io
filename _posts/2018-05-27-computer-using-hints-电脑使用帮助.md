@@ -352,6 +352,7 @@ modify_date: 2018-06-10
 * [linux下awk内置函数的使用(split/substr/length)](https://www.cnblogs.com/sunada2005/p/3493941.html)
 * [Linux指令-yes](https://blog.csdn.net/u012313689/article/details/53065446)
 * [Linux命令之exit - 退出当前shell【返回值状态】](https://www.cnblogs.com/itcomputer/p/4157859.html)
+* [linux-Centos7安装python3并与python2共存](https://www.cnblogs.com/JahanGu/p/7452527.html)
 
 
 ## 2. Special Topic Hints

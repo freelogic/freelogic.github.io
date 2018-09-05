@@ -50,10 +50,12 @@ modify_date: 2018-06-10
     * 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
     * 1.1.22-Ubuntu18.04如何安装rpm包
     * 1.1.23-Ubuntu18.04的各种安装集锦
+    * 1.1.24-Ubuntu18.04的docker
   * 1.2-Centos
     * 1.2.1-Centos7如何连接windows网络的某台PC的共享目录?
     * 1.2.2 Centos7安装crontab
     * 1.2.3 Centos7的各种安装集锦
+    * 1.2.4 Centos7的docker
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -329,6 +331,8 @@ modify_date: 2018-06-10
 #### 1.1.23-Ubuntu18.04的各种安装集锦
 * 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
 
+#### 1.1.24-Ubuntu18.04的docker
+* [Ubuntu Docker安装](https://blog.csdn.net/world_snow/article/details/79625341)
 
 ### 1.2 Centos
 
@@ -353,6 +357,15 @@ modify_date: 2018-06-10
 * [Linux指令-yes](https://blog.csdn.net/u012313689/article/details/53065446)
 * [Linux命令之exit - 退出当前shell【返回值状态】](https://www.cnblogs.com/itcomputer/p/4157859.html)
 * [linux-Centos7安装python3并与python2共存](https://www.cnblogs.com/JahanGu/p/7452527.html)
+* [centos安装chrome](yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm)
+  * [资料](https://www.cnblogs.com/cxying93/p/6434512.html)
+  * 启动命令行: google-chrome --no-sandbox &  (用上面提示安装完毕chrome后，命令行启动不带沙箱的chrome并放在后台运行（Ctrl+D）无法中断;）
+
+
+#### 1.2.4 Centos7的docker
+* [docker常用命令](https://blog.csdn.net/ling811/article/details/53671837)
+* [docker国内镜像源设置](https://www.cnblogs.com/yangqimo/p/7306670.html)
+* [sonatype/nexus3的docker镜像](https://hub.docker.com/r/sonatype/nexus3/)
 
 
 ## 2. Special Topic Hints
@@ -420,6 +433,7 @@ modify_date: 2018-06-10
     ```
   * [Centos7下安装Gitlab操作](https://www.cnblogs.com/wenwei-blog/p/5861450.html)
     * centos7需要[打开防火墙并开通端口比如7070](https://www.cnblogs.com/moxiaoan/p/5683743.html)；改动防火墙设定后一定要reload一下生效才行！
+      * [centos7+python3.6下执行firewall-cmd命令提示“ModuleNotFoundError：no module named ‘gi’ ”的解决](https://blog.csdn.net/weixin_39860437/article/details/79320343)
     
     ```
     1. 邮件设定目前未测试成功： smtp/postfix这2个gitlab的支持的email，目前仅尝试关闭smtp，并用postfix邮件来设置，未测试成功！

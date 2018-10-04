@@ -3,10 +3,10 @@ layout: post
 title: 2018-05-27-computer-using-hints-电脑使用帮助
 key: 20180527
 tags: ubuntu cuda cudnn tensorflow gym qq ssh
-modify_date: 2018-05-27
+modify_date: 2018-10-04
 ---
 
-# 2018-05-27-computer-using-hints-电脑使用帮助
+# computer-using-hints-电脑使用帮助
 
 
 说明：
@@ -44,6 +44,18 @@ modify_date: 2018-05-27
     * 1.1.15-查看Ubuntu18.04的硬件配置
     * 1.1.16-Ubuntu18.04的apt-get命令如何安装指定版本?
     * 1.1.17-Ubuntu18.04的ufw的简易防火墙操作
+    * 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+    * 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+    * 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
+    * 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+    * 1.1.22-Ubuntu18.04如何安装rpm包
+    * 1.1.23-Ubuntu18.04的各种安装集锦
+    * 1.1.24-Ubuntu18.04的docker
+  * 1.2-Centos
+    * 1.2.1-Centos7如何连接windows网络的某台PC的共享目录?
+    * 1.2.2 Centos7安装crontab
+    * 1.2.3 Centos7的各种安装集锦
+    * 1.2.4 Centos7的docker
 * 2-Special Topic Hints
   * 2.1-Programming
     * 2.1.1-版本管理
@@ -51,6 +63,8 @@ modify_date: 2018-05-27
         * 2.1.1.1.1-如何从本地PUSH分支改动到多个远端GIT仓库(假设远端GIT仓库为多个备份镜像库且内容相同) ?
       * 2.1.1.2-GIT仓库
         * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
+        * 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
+      * 2.1.1.3-GITLAB安装
     * 2.1.2-JAVA
       * 2.1.2.1-JDK 
         * 2.1.2.1.1-JDK安装
@@ -128,6 +142,13 @@ modify_date: 2018-05-27
 * install QQ
   * Best way is use "[WEBQQ(http://web2.qq.com/)](http://web2.qq.com/)" instead of install local program;
   * WEBQQ is an URL, you can make a URL link icon on desktop of ubuntu;
+* wine+麒麟版本wine-qqintl的说明
+  * 参考： https://www.cnblogs.com/linux130/p/5694840.html
+  * 失败： 首先顺利安装wine和winetricks，但是按照以上参考用dpkg安装麒麟版本的wine-qqintel后，安装顺利，启动无反映，甚至有一次将ubuntu18.04弄死机了！
+  * 推测： wine比较好资源； 麒麟版定制的qq不适合ubuntu，毕竟麒麟版本的ubuntu是一个ubuntu的中文子集，有一定特殊性；
+  * 结论： wine有一定风险，容易中win的病毒，速度慢，好资源，而且兼容性不好，暂时还是用webqq；
+* 親測可用,並支持中文輸入[ubuntu18.04超级简单的安装wine QQ教程](https://blog.csdn.net/qq_36428171/article/details/81209475)
+  * 原理: 先ubuntu1804的software里面安装"wine"和"winetricks",然后启动winetricks选择安装windows程序qq(2017年),任何错误包括网络则反复尝试,我尝试了10几次,终于自动出现QQ安装界面,然后安装成功,支持中文输入的QQ可用!!!
 
 #### 1.1.5 Ubuntu18.04如何安装chrome?
 * install chrome
@@ -239,6 +260,115 @@ modify_date: 2018-05-27
 * ubuntu的ufw安装和使用
   * TODO: ubuntu的ufw安装和使用  
 
+#### 1.1.18-Ubuntu18.04如何添加桌面快捷方式?
+* 说明：ubuntu不如win10，可以将exe文件或其他文件直接拖到桌面来建立一个lnk文件，而是需要单独建立desktop文件且自己填写相关字段；
+* 参考：[Ubuntu怎么添加桌面快捷启动方式](https://jingyan.baidu.com/article/2d5afd6929699185a2e28ed4.html)
+* 举例：请参考我本地pycharm的桌面desktop文件；
+  * "Icon"字段是连接ico图标的，如下暂时没有先空着；
+  * 此desktop文件需要鼠标右键选择“属性->权限”，勾选“允许作为程序执行文件”，才能再以后双击运行；
+  * 如果要将其作为desktop的文本文件编辑，则打开的时候选择某个文本编辑器而不能双击运行；
+  
+    ```
+    [Desktop Entry]
+    Name=pycharm
+    Exec=sh /home/ya/tool/pycharm-community-2018.1.3/bin/pycharm.sh
+    Icon=
+    Type=Application
+    StartupNotify=true
+    GenericName[zh_CN]=pycharm CE
+    Comment[zh_CN]=pycharm社区版
+
+    ```
+
+#### 1.1.19-Ubuntu18.04如何用dpkg来安装和删除软件?
+* 说明：dpkg是ubuntu的包管理；
+* 参考：
+  * [1](http://www.xiazaiba.com/jiaocheng/27592.html)
+  * [2](https://zhidao.baidu.com/question/1691933368850239588.html)
+* 举例：
+
+    ```
+    
+    # list deb packages in current folder
+    
+    $ ll
+    drwx------ 2 xx   xx        4096 7月   1  2014 ./
+    drwxr-xr-x 4 xx   xx        4096 5月  31 07:58 ../
+    -rw-r--r-- 1 root root   1607142 1月   3  2014 fonts-wqy-microhei_0.2.0-beta-2_all.deb
+    -rw-r--r-- 1 root root      2566 1月   3  2014 ttf-wqy-microhei_0.2.0-beta-2_all.deb
+    -rw-r--r-- 1 root root 123289302 5月   3  2014 wine-qqintl_0.1.3-2_i386.deb
+    
+    sudo dpkg -I fonts-wqy-microhei_0.2.0-beta-2_all.deb  # 查看deb包的信息，此非安装；
+    sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb  # install deb包；
+    sudo dpkg -P fonts-wqy-microhei  # remove deb and config all! 卸载的时候已经安装的模块名字和安装包的名字不同，请注意；
+    
+    ```
+
+#### 1.1.20-Ubuntu18.04在软件中搜索关键字"wechat"然后可以安装"electronic Wechat"并扫码登陆即可。
+
+#### 1.1.21-Ubuntu18.04安装wine3.0.1(最新稳定版)
+* ubuntu安装wine
+  * 可以在ubuntu的software里面搜索“wine”关键字，然后安装3.0.1最新稳定版，而不是3.9.0的开发最新版本；
+  * 同样方法可以安装”winetricks“，它启动后，自动扫描ubuntu的wine环境的缺漏dll，并一一安装，很方便;
+* 警告：
+  * 经过wine试用，发现wine还是比较不稳定的，经常导致了ubuntu的报错，删除后报错明显少了;
+  * 而且wine容易让linux感染win下面的病毒，因为wine将win底层api调用转换为linux的底层api调用;
+
+#### 1.1.22-Ubuntu18.04如何安装rpm包
+* 说明
+  * rpm是suselinux的安装包，而不是centos/debian/ubuntu家族的linux，格式略有不同;
+  * ubuntu建议，将rpm包转换为的deb包格式，并用ubuntu的dpkg的包管理来处理，具体方法如下;
+  * 参考：https://www.linuxidc.com/Linux/2017-08/146269.htm
+
+    ```
+    
+    apt-get install alien //安装alien模块;
+    alien packageabc.rpm     //使用alien将rpm包转换成deb格式的包;
+    dpkg -I packageabc.deb   //-I参数是查看pakcage信息，其他参数自己dpkg不带参数看help提示;
+    dpkg -i package.deb      //通过dpkg安装deb格式的包
+    //ubuntu的 apt-get模块其实后台也是用dpkg来管理包的，ubuntu官方建议尽量用apt/dpkg来管理包;
+    
+    ```
+
+#### 1.1.23-Ubuntu18.04的各种安装集锦
+* 参考：https://blog.csdn.net/fuchaosz/article/details/51882935
+
+#### 1.1.24-Ubuntu18.04的docker
+* [Ubuntu Docker安装](https://blog.csdn.net/world_snow/article/details/79625341)
+
+### 1.2 Centos
+
+#### 1.2.1 Centos7如何连接windows网络的某台PC的共享目录?
+* centos下如何连接到windows网络的某台PC的共享目录:
+
+    ```
+    sudo mkdir /mnt/gitlab #centos下新建目录供连接
+    #在10.30.23.128上面建立用户gitlab和密码gitlab，并让他（或everyone用户）对共享目录(//10.30.23.128/gitlab)有只读权限，方便centos通过samba连接后拷贝文件！
+    sudo mount -t cifs -o username=gitlab,password=gitlab  //10.30.23.128/gitlab /mnt/gitlab #用samba client从centos连接到windows的PC上的共享目录
+    
+    ```
+#### 1.2.2 Centos7安装crontab
+* [安装crontab](https://www.cnblogs.com/lzhp/p/6087525.html)
+* [利用crontab定时执行任务](https://www.cnblogs.com/jianqingwang/p/6726589.html)
+
+#### 1.2.3 Centos7的各种安装集锦
+* [Linux shell 获取目录下时间最新的文件的文件名](https://www.cnblogs.com/echo-valley/p/8268527.html)
+* [linux shell 字符串操作详解 （长度，读取，替换，截取，连接，对比，删除，位置 ）](https://www.cnblogs.com/gaochsh/p/6901809.html)
+* [linux中shell,awk,sed截取字符串方法总结](https://www.cnblogs.com/kinga/p/5772566.html)
+* [linux下awk内置函数的使用(split/substr/length)](https://www.cnblogs.com/sunada2005/p/3493941.html)
+* [Linux指令-yes](https://blog.csdn.net/u012313689/article/details/53065446)
+* [Linux命令之exit - 退出当前shell【返回值状态】](https://www.cnblogs.com/itcomputer/p/4157859.html)
+* [linux-Centos7安装python3并与python2共存](https://www.cnblogs.com/JahanGu/p/7452527.html)
+* [centos安装chrome](yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm)
+  * [资料](https://www.cnblogs.com/cxying93/p/6434512.html)
+  * 启动命令行: google-chrome --no-sandbox &  (用上面提示安装完毕chrome后，命令行启动不带沙箱的chrome并放在后台运行（Ctrl+D）无法中断;）
+
+
+#### 1.2.4 Centos7的docker
+* [docker常用命令](https://blog.csdn.net/ling811/article/details/53671837)
+* [docker国内镜像源设置](https://www.cnblogs.com/yangqimo/p/7306670.html)
+* [sonatype/nexus3的docker镜像](https://hub.docker.com/r/sonatype/nexus3/)
+
 
 ## 2. Special Topic Hints
 
@@ -270,6 +400,50 @@ modify_date: 2018-05-27
 * 如何进入gitlab帐号(忘记密码和关联email的情况下)?
   * 如果gitlab帐号和github同名或绑定; 那么用github帐号登录到gitlab当中, 然后可以修改password和关联email;
 
+###### 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
+* 问题：如果新安装pycharm,第一次checkout一个远端git仓库repo的项目project，但是提示报错如上，其实是git远端是私服，而ubuntu本地没配置SSH认证，或者GIT远端认证过期了；
+* 解决：关闭GIT的SSH认证，因为私服GIT往往不可能像github这样全球公开且有SSH认证证书的站点，所以私服往往不配置证书，而pycharm需要忽略他，其实不是pycharm忽略是ubuntu系统忽略；
+  * 参考： [参考](http://quabr.com/21181231/server-certificate-verification-failed-cafile-etc-ssl-certs-ca-certificates-c)
+  * 命令： export GIT_SSL_NO_VERIFY=1 //Open your terminal and run following command, finally restart your pycharm from cmd like "./bin/pycharm.sh"；
+
+##### 2.1.1.3-GITLAB安装
+* 参考：
+  * [在ubuntu16上搭建gitlab](https://blog.csdn.net/qq_36467463/article/details/78283874)
+    * 教简单，安装配置完，查看status或restart就能启动，并在“http://localhost/”查看，要额外配置https等高级操作请自查;
+  * [gitlab备份、还原及迁移(经验证可行)](https://www.cnblogs.com/kowloon/p/7504140.html)
+    * 备份包必须放置在指定的“backup”下，如“/var/opt/gitlab/backups/1528390913_2018_06_08_10.3.0_gitlab_backup.tar”
+    * 并将文件名前缀作为参数放入命令，如“gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0”   
+    * 说明：因为要停止gitlab服务，比较慢，需要等待，不太方便将backup的整个过程作为自动化处理，而且涉及数据恢复，很复杂，需要手动操作才放心！ 
+  * [修改gitlab的root密码](https://jingyan.baidu.com/article/6525d4b181bd41ac7d2e94af.html)
+
+    ```
+    sudo find / -name "gitlab-ctl"    //因不同版本gitlab的默认安装位置可能不同，此命令来找到其控制台命令;
+    sudo /opt/gitlab/bin/gitlab-ctl restart|start|stop|status //控制台命令，和其他service模块类似用法;
+    
+    # 修改root密码方法(用有权限用户，进入rails控制台，修改root命令并退出，当即生效而不用重启gitlab)
+    /opt/gitlab/bin/gitlab-rails console production    //进入rails环境（一般需要git用户，不行就先到root退出为git用户)
+    # 看到提示符变为“irb(main):001:0>”就对了;
+    irb(main):001:0> user=User.where(id:1).first  //输入这行查找root用户
+    => #<User id:1 @root>                         //输出证明已经查到并选中了root用户
+    irb(main):002:0> user.password='123456'       //修改帐号密码
+    => "123456"                                   //输出修改后的新密码，就是上面你给的新密码
+    irb(main):003:0> user.save                    //保存用户信息
+    Enqueued ActionMailer::DeliveryJob (Job ID: 18b1dbf3-93bf-4859-a190-b0fca6c0654d) to Sidekiq(mailers) with arguments: "DeviseMailer", "password_change", "deliver_now", gid://gitlab/User/1
+    => true                                       //保存结果为true，搞定;
+    irb(main):004:0> quit                         //退出rails环境;
+    
+    ```
+  * [Centos7下安装Gitlab操作](https://www.cnblogs.com/wenwei-blog/p/5861450.html)
+    * centos7需要[打开防火墙并开通端口比如7070](https://www.cnblogs.com/moxiaoan/p/5683743.html)；改动防火墙设定后一定要reload一下生效才行！
+      * [centos7+python3.6下执行firewall-cmd命令提示“ModuleNotFoundError：no module named ‘gi’ ”的解决](https://blog.csdn.net/weixin_39860437/article/details/79320343)
+    
+    ```
+    1. 邮件设定目前未测试成功： smtp/postfix这2个gitlab的支持的email，目前仅尝试关闭smtp，并用postfix邮件来设置，未测试成功！
+    2. centos7需要打开防火墙，客户端也需要开启相关端口，才能用浏览器看到；地址比如： “http://10.30.22.42:7070”；
+    3. 第一次打开主页比如(http://10.30.22.42:7070),会提示输入2边密码就是root管理员的密码（不是linux的root！），之后root就是管理gitlab的管理账号！
+
+    ```
+  
 #### 2.1.2 JAVA
 
 ##### 2.1.2.1 JDK 
@@ -318,16 +492,16 @@ modify_date: 2018-05-27
   * 错误1: /usr/local/mysql3306/bin/mysqld: error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory;
     * 则需安装 sudo apt-get install libaio-dev  //安装mysql需要的库
 
-```
-
-    修改默认密码: mysql安装的时候会提示,其默认root的密码是"#P;eijqF<1Y6",千万别忘记,记录下来,
-                然后登录后mysql会会被要求必须马上修改密码并提示错误如下：You must reset your password using ALTER USER statement before executing this statement. 
-                你可以执行如下命令(参考:https://blog.csdn.net/dotalee/article/details/72576667)
-    ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;	//重设密码且永不过期
-    ./mysqladmin -u root -p shutdown //关闭mysql (参考链接:https://blog.csdn.net/zyc_love_study/article/details/74347977)
-    ps -ef|grep mysql  //查看mysql进程;
-
-```
+    ```
+    
+        修改默认密码: mysql安装的时候会提示,其默认root的密码是"#P;eijqF<1Y6",千万别忘记,记录下来,
+                    然后登录后mysql会会被要求必须马上修改密码并提示错误如下：You must reset your password using ALTER USER statement before executing this statement. 
+                    你可以执行如下命令(参考:https://blog.csdn.net/dotalee/article/details/72576667)
+        ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678' PASSWORD EXPIRE NEVER;	//重设密码且永不过期
+        ./mysqladmin -u root -p shutdown //关闭mysql (参考链接:https://blog.csdn.net/zyc_love_study/article/details/74347977)
+        ps -ef|grep mysql  //查看mysql进程;
+    
+    ```
 
 #### 2.1.4 Testing
 

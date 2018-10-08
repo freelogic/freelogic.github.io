@@ -65,6 +65,7 @@ modify_date: 2018-10-04
         * 2.1.1.2.1-无法注册新GITLAB帐号且忘记老帐号密码怎么办?
         * 2.1.1.2.2-pycharm报错“...pycharm server certificate verrification failed. CAfile: ...”怎么办？
       * 2.1.1.3-GITLAB安装
+      * 2.1.1.4-GITLAB从其备份中自动恢复
     * 2.1.2-JAVA
       * 2.1.2.1-JDK 
         * 2.1.2.1.1-JDK安装
@@ -443,6 +444,97 @@ modify_date: 2018-10-04
     3. 第一次打开主页比如(http://10.30.22.42:7070),会提示输入2边密码就是root管理员的密码（不是linux的root！），之后root就是管理gitlab的管理账号！
 
     ```
+
+##### 2.1.1.4-GITLAB从其备份中自动恢复
+* 思路：
+  * 我们有一个备份文件，并每日全备份的拷贝到一个windows的普通PC某目录，现在我们将此目录共享；
+  * 用一个安装有gitlab的ubuntu的PC，能连到windows的共享目录，并用samba加载到ubuntu下；
+  * 用cron来每日先从gitlab共享备份目录找到最新的，过滤出备份时间戳，然后停止gitlab部分服务，升级gitlab；
+  * 最后在删除一定时间外的自动备份包；
+  * 最后考虑gitlab服务器的自动启动或自动关闭及所在PC的每日晚上自动关机和每日早上自动启动的，定期保养问题（一直运行会有问题）；
+  * 以上步骤需要如下几个脚本；
+
+
+  ```
+  
+      # 这是命令“crontab -e"执行后显示的几个job的sh脚本，请先切换为root用户，然后查看”crontab -e";
+      30 08 * * * sh /var/opt/gitlab/restore_gitlab_manual.sh   -- do resotre gitlab for NEWEST backup file at 08:30 every day.
+      05 09 * * * sh /var/opt/gitlab/stop_gitlab_manual.sh      -- do stop gitlab for save CPU/MEM/DISK resources at 09:05 every day.
+      05 12 * * * sh /var/opt/gitlab/remove_old_backup_file.sh  -- do remove old gitlab backup files everyday at 12:05.
+      05 22 * * * /usr/sbin/shutdown -h now  -- shutdown os and halt up pc everyday at 22:05.
+  
+  ```
+
+
+  ```
+  
+  # 如下是脚本restore_gitlab_manual.sh
+  
+    #!/bin/bash
+
+    #stop gitlab if NOT
+    gitlab-ctl stop unicorn
+    sleep 5s
+    gitlab-ctl stop sidekiq
+    sleep 5s
+    
+    #用samba client从centos连接到windows的PC上的共享目录;如果已经mount会报错，请忽略。
+    sudo mount -t cifs -o username=gitlab,password=gitlab  //10.30.23.128/gitlab /mnt/gitlab
+    
+    cd /mnt/gitlab
+    #get backup file name for make restore command line.
+    backup_filename=`ls -lt /mnt/gitlab/ | grep backup.tar | head -n 1 |awk '{print $9}'`
+    echo $backup_filename
+    
+    #copy backup file to gitlab backup folder
+    cp -n $backup_filename /var/opt/gitlab/backups
+    cd /var/opt/gitlab/backups
+    chmod 777 $backup_filename
+    chown git $backup_filename
+    #ls $backup_filename
+    
+    #parse backup_ver for resotre command
+    backup_ver=`echo ${backup_filename%_*}`  #最小限度从后面截掉word
+    #echo $backup_ver
+    backup_ver=`echo ${backup_ver%_*}`  #最小限度从后面截掉word
+    #echo $backup_ver
+    
+    # try to restore gitlab with NEWEST data!
+    # gitlab-rake gitlab:backup:restore BACKUP=1528390913_2018_06_08_10.3.0
+    # 为了需要输入yes，所以增加echo方法，此法只能处理简单情况，复杂的shell脚本则可能有问题！
+    # ref: https://www.cnblogs.com/mologa-jie/p/6065159.html
+    # 为了要输入2个以上的yes，用了linux的yes命令行不断输出yes直到进程结束；
+    # echo yes|gitlab-rake gitlab:backup:restore BACKUP=$backup_ver
+    yes yes|gitlab-rake gitlab:backup:restore BACKUP=$backup_ver
+    
+    exit  # 以最后一条命令的exit返回值作为整个脚本的返回值；
+    
+    #cd /var/opt/gitlab/backups
+    
+
+  ```
+
+  
+  ```
+  
+  # 如下是脚本stop_gitlab_manual.sh 
+  
+    !/bin/bash
+    # stop gitlab by below command and save resource of CPU/MEM/DISKs.
+    gitlab-ctl stop
+
+  ```
+  
+    
+  ```
+  
+  # 如下是脚本remove_old_backup_file.sh 
+  
+    #!/bin/bash
+    # remove files elder than 7 days, be VERY careful!
+    find "/var/opt/gitlab/backups/" -name "*.tar" -ctime +7 -exec rm -rf {} \;
+
+  ```
   
 #### 2.1.2 JAVA
 

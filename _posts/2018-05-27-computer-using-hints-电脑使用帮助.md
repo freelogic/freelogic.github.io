@@ -51,6 +51,7 @@ modify_date: 2018-10-04
     * 1.1.22-Ubuntu18.04如何安装rpm包
     * 1.1.23-Ubuntu18.04的各种安装集锦
     * 1.1.24-Ubuntu18.04的docker
+    * 1.1.25-Ubuntu18.04安装多线程断点续传的工具aria2和其webgui工具
   * 1.2-Centos
     * 1.2.1-Centos7如何连接windows网络的某台PC的共享目录?
     * 1.2.2 Centos7安装crontab
@@ -81,6 +82,8 @@ modify_date: 2018-10-04
       * 2.2.1.1-ubuntu   
         * 2.1.1.1.1-ubuntu18.04环境安装机器学习环境TF的三件套CUDA-CUDNN-TENSORFLOW    
         * 2.1.1.1.2-ubuntu18.04环境安装OpenAI的GYM的强化学习环境 
+    * 2.2.2-DATASET
+      * 2.2.2.1-MSCOCO     
   * 2.3 大数据
     * 2.3.1-日志 
       * 2.3.1.1-ELK   
@@ -337,6 +340,10 @@ modify_date: 2018-10-04
 #### 1.1.24-Ubuntu18.04的docker
 * [Ubuntu Docker安装](https://blog.csdn.net/world_snow/article/details/79625341)
 
+
+#### 1.1.25-Ubuntu18.04安装多线程断点续传的工具aria2和其webgui工具
+* [安装aria2(可直接命令行运行)和webui界面](https://blog.sunriseydy.top/technology/server-blog/server/zaiubuntushangyongaria2hearia2webuishixianyuanchengduoxianchengxiazai/)
+
 ### 1.2 Centos
 
 #### 1.2.1 Centos7如何连接windows网络的某台PC的共享目录?
@@ -439,7 +446,7 @@ modify_date: 2018-10-04
       * [centos7+python3.6下执行firewall-cmd命令提示“ModuleNotFoundError：no module named ‘gi’ ”的解决](https://blog.csdn.net/weixin_39860437/article/details/79320343)
     
     ```
-    1. 邮件设定目前未测试成功： smtp/postfix这2个gitlab的支持的email，目前仅尝试关闭smtp，并用postfix邮件来设置，未测试成功！
+    1. 邮件设定目前未测试成功： smtp/postfix这2个gitlab的支持的email，目gitee前仅尝试关闭smtp，并用postfix邮件来设置，未测试成功！
     2. centos7需要打开防火墙，客户端也需要开启相关端口，才能用浏览器看到；地址比如： “http://10.30.22.42:7070”；
     3. 第一次打开主页比如(http://10.30.22.42:7070),会提示输入2边密码就是root管理员的密码（不是linux的root！），之后root就是管理gitlab的管理账号！
 
@@ -681,6 +688,10 @@ modify_date: 2018-10-04
     # 命令:查看nvidia卡型号;
     $ lspci | grep -i nvidia
     # 返回内容: 01:00.0 VGA compatible controller: NVIDIA Corporation GM107M [GeForce GTX 960M] (rev a2)
+
+    # 安装nvidia显卡驱动；
+    # 参见：https://blog.csdn.net/tjuyanming/article/details/80862290  （三种方法，ubuntu可直接自己下载，先察兼容版本；）
+    # nvidia显卡驱动安装后reboot如果grub出错，参考：https://blog.csdn.net/tjuyanming/article/details/79267984
     
   ```  
 
@@ -834,6 +845,15 @@ modify_date: 2018-10-04
     * 安装tkinter: sudo apt install python3-tk   //特别注意,不是 sudo apt install python-tk!!!
 
 
+
+#### 2.2.2 DATASET 
+
+##### 2.2.2.1 MSCOCO   
+* [最新MSCOCO-2017资源link(下载速度慢)](https://blog.csdn.net/weixin_34613450/article/details/80691704)
+* [用aria2命令行来多线程断点续传下载巨大巨慢的MSCOCO](https://blog.csdn.net/qq_33000225/article/details/78831102)
+* [在Ubuntu上用aria2和Aria2WebUI实现远程多线程下载](https://blog.sunriseydy.top/technology/server-blog/server/zaiubuntushangyongaria2hearia2webuishixianyuanchengduoxianchengxiazai/)
+    
+
 ### 2.3 大数据
 
 #### 2.3.1 日志 
@@ -847,5 +867,4 @@ modify_date: 2018-10-04
 
 
 ## 3. END
-
 
